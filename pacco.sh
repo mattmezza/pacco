@@ -9,13 +9,13 @@ Usage:
     $0 [OPT] CMD ARGS
 
 CMD:
-     l|list
-     i|install
-     u|uninstall
-     s|source
-    ia|inatall-all
-    ua|uninstall-all
-    sa|source-all
+    l|list
+    i|install
+    u|uninstall
+    s|source
+    I|ia|inatall-all
+    U|ua|uninstall-all
+    S|sa|source-all
 
 OPT:
     -f|--file
@@ -28,9 +28,9 @@ Examples:
     $ $0 i name git-url tag  # installs pkg 'name' @tag via 'url'
     $ $0 u name              # uninstalls pkg 'name'
     $ $0 s name              # sources pkg 'name'
-    $ $0 ia                  # installs all pkgs
-    $ $0 ua                  # uninstalls all pkgs
-    $ $0 sa                  # sources all the pkgs
+    $ $0 I                   # installs all pkgs
+    $ $0 U                   # uninstalls all pkgs
+    $ $0 S                   # sources all the pkgs
     $ $0 -v                  # prints the pacco version
     $ $0 -h                  # prints this message
     $ $0 -d                  # prints the pacco dir
@@ -55,7 +55,11 @@ EOF
             ;;
         s|source)
             local WHAT=$2
-            source "$DIR/$WHAT/pacco"
+            if [ -f "$DIR/$WHAT/pacco" ]; then
+                source "$DIR/$WHAT/pacco"
+            else
+                return 0
+            fi
             ;;
         i|install)
             local WHAT=$2
@@ -66,13 +70,13 @@ EOF
             git clone -q --branch $WHICH $WHERE "$DIR/$WHAT" > /dev/null 2> /dev/null
             echo "Installed '$WHAT:$WHICH'"
             ;;
-        ia|install-all)
+        I|ia|install-all)
             source <(cat $MANIFEST | while read in; do echo "$0 i $in"; done)
             ;;
-        ua|uninstall-all)
+        U|ua|uninstall-all)
             source <(cat $MANIFEST | while read in; do echo "$0 u $in"; done)
             ;;
-        sa|source-all)
+        S|sa|source-all)
             source <(cat $MANIFEST | while read in; do echo "$0 s $in"; done)
             ;;
         *)

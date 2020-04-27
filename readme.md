@@ -33,13 +33,13 @@ Usage:
     pacco [OPT] CMD ARGS
 
 CMD:
-     l|list
-     i|install
-     u|uninstall
-     s|source
-    ia|inatall-all
-    ua|uninstall-all
-    sa|source-all
+    l|list
+    i|install
+    u|uninstall
+    s|source
+    I|ia|inatall-all
+    U|ua|uninstall-all
+    S|sa|source-all
 
 OPT:
     -f|--file
@@ -52,14 +52,13 @@ Examples:
     $ pacco i name git-url tag  # installs pkg 'name' @tag via 'url'
     $ pacco u name              # uninstalls pkg 'name'
     $ pacco s name              # sources pkg 'name'
-    $ pacco ia                  # installs all pkgs
-    $ pacco ua                  # uninstalls all pkgs
-    $ pacco sa                  # sources all the pkgs
+    $ pacco I                   # installs all pkgs
+    $ pacco U                   # uninstalls all pkgs
+    $ pacco S                   # sources all the pkgs
     $ pacco -v                  # prints the pacco version
     $ pacco -h                  # prints this message
     $ pacco -d                  # prints the pacco dir
     $ pacco -f                  # prints the pacco file
-
 ```
 
 Development
