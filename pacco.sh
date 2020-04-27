@@ -18,6 +18,8 @@ CMD:
     sa|source-all
 
 OPT:
+    -f|--file
+    -d|--dir
     -h|--help
     -v|--version
 
@@ -31,10 +33,18 @@ Examples:
     $ $0 sa                  # sources all the pkgs
     $ $0 -v                  # prints the pacco version
     $ $0 -h                  # prints this message
+    $ $0 -d                  # prints the pacco dir
+    $ $0 -f                  # prints the pacco file
 EOF
             ;;
         -v|--version)
             echo $VERSION
+            ;;
+        -d|--dir)
+            echo $DIR
+            ;;
+        -f|--file)
+            echo $MANIFEST
             ;;
         l|list)
             cat $MANIFEST | sort

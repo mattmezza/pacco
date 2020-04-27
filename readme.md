@@ -3,7 +3,7 @@ pacco
 
 `pacco` is a utility to allow you to quickly install or uninstall plugins with custom alias or functions.
 
-![](j.gif)
+![](pacco.gif)
 It works with a simple plain text file `pacco.txt` that lists the wanted packages in this format:
 ```
 jump  git@github.com:mattmezza/jump.git   1.0.0
@@ -42,6 +42,8 @@ CMD:
     sa|source-all
 
 OPT:
+    -f|--file
+    -d|--dir
     -h|--help
     -v|--version
 
@@ -55,6 +57,8 @@ Examples:
     $ pacco sa                  # sources all the pkgs
     $ pacco -v                  # prints the pacco version
     $ pacco -h                  # prints this message
+    $ pacco -d                  # prints the pacco dir
+    $ pacco -f                  # prints the pacco file
 
 ```
 
